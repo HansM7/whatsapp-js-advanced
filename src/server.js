@@ -16,17 +16,25 @@ const app = express();
 
 app.use(express.json());
 
+// const client = new Client({
+//   authStrategy: new LocalAuth({
+//     dataPath: "sessions",
+//   }),
+//   puppeteer: {
+//     args: ["--no-sandbox", "--disable-setuid-sandbox"], // Desactiva el sandbox
+//   },
+//   webVersionCache: {
+//     type: "remote",
+//     remotePath:
+//       "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html",
+//   },
+// });
+
 const client = new Client({
-  authStrategy: new LocalAuth({
-    dataPath: "sessions",
-  }),
+  session: sessionData,
   puppeteer: {
-    args: ["--no-sandbox", "--disable-setuid-sandbox"], // Desactiva el sandbox
-  },
-  webVersionCache: {
-    type: "remote",
-    remotePath:
-      "https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html",
+    headless: true,
+    args: ["--no-sandbox"],
   },
 });
 
