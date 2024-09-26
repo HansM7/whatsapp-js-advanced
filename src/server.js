@@ -37,6 +37,7 @@ const client = new Client({
   puppeteer: {
     headless: true,
     args: ["--no-sandbox"],
+    executablePath: "/usr/bin/chromium-browser",
   },
   webVersionCache: {
     type: "remote",
@@ -87,3 +88,16 @@ configCron(client);
 app.listen(4000, () => {
   consola.start("Server is running on port 4000");
 });
+
+// if (!environments.DEV) {
+//   options = {
+//     headless: true,
+//     executablePath: "/usr/bin/chromium-browser",
+//     args: ["--no-sandbox", "--disable-setuid-sandbox"],
+//   };
+// }
+
+// const client = new Client({
+//   authStrategy: new LocalAuth(),
+//   puppeteer: { product: "chrome", executablePath: "/usr/bin/chromium-browser" },
+// });
